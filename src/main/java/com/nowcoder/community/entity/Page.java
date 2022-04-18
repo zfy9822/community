@@ -8,7 +8,7 @@ package com.nowcoder.community.entity;
 public class Page {
 
     // 当前页码
-    private int current = 1;
+    private int currents = 1;
     // 显示上限
     private int limit = 10;
     // 数据总数（用于计算总页数）
@@ -17,12 +17,12 @@ public class Page {
     private String path;
 
     public int getCurrent() {
-        return current;
+        return currents;
     }
 
     public void setCurrent(int current) {
         if(current >= 1){
-            this.current = current;
+            this.currents = current;
         }
     }
 
@@ -60,7 +60,7 @@ public class Page {
      */
     public int getOffset(){
         // current * limit - limit
-        return (current - 1) * limit;
+        return (currents - 1) * limit;
     }
 
     /**
@@ -81,7 +81,7 @@ public class Page {
      * @return
      */
     public int getFrom(){
-        int from = current - 2;
+        int from = currents - 2;
         return from < 1 ? 1 : from;
     }
 
@@ -90,7 +90,7 @@ public class Page {
      * @return
      */
     public int getTo(){
-        int to = current + 2;
+        int to = currents + 2;
         int total = getTotal();
         return to > total ? total : to;
     }

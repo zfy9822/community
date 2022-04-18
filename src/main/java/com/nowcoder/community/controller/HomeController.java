@@ -40,6 +40,7 @@ public class HomeController {
         page.setRows(discussPostService.findDiscussPostRows(0));
         page.setPath("/index");
 
+        //查询范围内的帖子信息
         List<DiscussPost> list = discussPostService.findDiscussPosts(0, page.getOffset(), page.getLimit());
         //discussPosts中存放帖子和用户的信息
         List<Map<String, Object>> discussPosts = new ArrayList<>();
