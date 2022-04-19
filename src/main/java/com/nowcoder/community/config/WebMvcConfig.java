@@ -1,6 +1,8 @@
 package com.nowcoder.community.config;
 
+import com.nowcoder.community.annotation.LoginRequired;
 import com.nowcoder.community.controller.interceptor.AlphaInterceptor;
+import com.nowcoder.community.controller.interceptor.LoginRequiredInterceptor;
 import com.nowcoder.community.controller.interceptor.LoginTicketInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -18,8 +20,13 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Autowired
     private AlphaInterceptor alphaInterceptor;
 
+    // 登录凭证拦截器，用于在每次操作前后处理登录凭证
     @Autowired
     private LoginTicketInterceptor loginTicketInterceptor;
+
+    // 登录检查拦截器，用于检查是否满足已经登录的条件，处理一些必须要登录才能显示的操作
+    @Autowired
+    private LoginRequiredInterceptor loginRequiredInterceptor;
 
     // SpringBoot拦截器配置
     @Override
@@ -30,6 +37,10 @@ public class WebMvcConfig implements WebMvcConfigurer {
                 .addPathPatterns("/register", "/login");
 
         registry.addInterceptor(loginTicketInterceptor)
+                .excludePathPatterns("/**/*.css", "**/*.js",
+                        "**/*.jpg", "**/*.png", "**/*.jpeg");
+
+        registry.addInterceptor(loginRequiredInterceptor)
                 .excludePathPatterns("/**/*.css", "**/*.js",
                         "**/*.jpg", "**/*.png", "**/*.jpeg");
     }

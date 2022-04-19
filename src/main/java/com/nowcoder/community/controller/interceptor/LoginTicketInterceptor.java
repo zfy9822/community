@@ -19,6 +19,8 @@ import java.util.Date;
  * @Date: 2022/4/18 15:23
  * @Description:
  */
+
+// 通过拦截器，实现显示登录信息的功能
 @Component
 public class LoginTicketInterceptor implements HandlerInterceptor {
 
@@ -50,7 +52,7 @@ public class LoginTicketInterceptor implements HandlerInterceptor {
         return true;
     }
 
-    // 在Controller之后执行
+    // 在Controller之后执行(模板引擎之前)
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
         User user = hostHolder.getUser();
