@@ -7,7 +7,6 @@ import com.nowcoder.community.util.CommunityConstant;
 import com.nowcoder.community.util.CommunityUtil;
 import com.nowcoder.community.util.MailClient;
 import org.apache.commons.lang3.StringUtils;
-import org.json.JSONException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -156,7 +155,7 @@ public class LoginController implements CommunityConstant {
     // 获取验证码
     @RequestMapping(path = "/forget/code", method = RequestMethod.GET)
     @ResponseBody
-    public String getForgetCode(String email, HttpSession session) throws JSONException {
+    public String getForgetCode(String email, HttpSession session) {
         if (StringUtils.isBlank(email)) {
             return CommunityUtil.getJSONString(1, "邮箱不能为空！");
         }
