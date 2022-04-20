@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  * @Author: zfy
  * @Date: 2022/4/16 18:51
- * @Description:
+ * @Description: 登录凭证实体
  */
 public class LoginTicket {
 

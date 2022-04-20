@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  * @Author: zfy
  * @Date: 2022/4/11 16:20
- * @Description:
+ * @Description: 帖子实体
  */
 public class DiscussPost {
 
