@@ -152,7 +152,7 @@ public class LoginController implements CommunityConstant {
         return "/site/forget";
     }
 
-    // 获取验证码
+    // 获取验证码(用于重置密码时通过邮箱验证)
     @RequestMapping(path = "/forget/code", method = RequestMethod.GET)
     @ResponseBody
     public String getForgetCode(String email, HttpSession session) {
