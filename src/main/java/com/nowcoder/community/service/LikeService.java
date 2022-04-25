@@ -32,12 +32,16 @@ public class LikeService {
                 boolean isMember = operations.opsForSet().isMember(entityLikeKey, userId);
 
                 operations.multi();
-
+                // 判断是否已经赞过
                 if (isMember) {
+                    // 取消实体的赞
                     operations.opsForSet().remove(entityLikeKey, userId);
+                    // 该实体对应用户的点赞数量减1
                     operations.opsForValue().decrement(userLikeKey);
                 } else {
+                    // 给实体点赞
                     operations.opsForSet().add(entityLikeKey, userId);
+                    // 该实体对应用户的点赞数量加1
                     operations.opsForValue().increment(userLikeKey);
                 }
 
