@@ -26,7 +26,7 @@ import java.util.Date;
  * @Date: 2022/4/10 12:47
  * @Description:
  */
-@Service
+//@Service
 public class AlphaService {
 
     @Autowired

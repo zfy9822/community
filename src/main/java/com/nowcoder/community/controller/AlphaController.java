@@ -23,8 +23,8 @@ import java.util.*;
  * @Date: 2022/4/9 11:34
  * @Description:
  */
-@Controller
-@RequestMapping("/alpha")
+//@Controller
+//@RequestMapping("/alpha")
 public class AlphaController {
 
     @Autowired
