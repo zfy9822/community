@@ -10,6 +10,8 @@ import org.apache.ibatis.annotations.*;
  */
 
 @Mapper
+// 废弃Mysql方式存取登录凭证，使用Redis提高效率
+@Deprecated
 public interface LoginTicketMapper {
 
     @Insert({
