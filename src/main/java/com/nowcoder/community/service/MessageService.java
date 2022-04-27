@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * @Author: zfy
  * @Date: 2022/4/21 10:16
- * @Description:
+ * @Description: 发送通知(私信、系统通知)的业务层
  */
 @Service
 public class MessageService {
@@ -56,6 +56,22 @@ public class MessageService {
 
     public int deleteMessage(int id){
         return messageMapper.updateStatus(Arrays.asList(new Integer[]{id}), 2);
+    }
+
+    public Message findLatestNotice(int userId, String topic){
+        return messageMapper.selectLatestNotice(userId, topic);
+    }
+
+    public int findNoticeCount(int userId, String topic){
+        return messageMapper.selectNoticeCount(userId, topic);
+    }
+
+    public int findNoticeUnreadCount(int userId, String topic){
+        return messageMapper.selectNoticeUnreadCount(userId, topic);
+    }
+
+    public List<Message> findNotices(int userId, String topic, int offset, int limit){
+        return messageMapper.selectNotices(userId, topic, offset, limit);
     }
 
 }

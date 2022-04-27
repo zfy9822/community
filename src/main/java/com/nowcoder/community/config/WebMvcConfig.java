@@ -4,6 +4,7 @@ import com.nowcoder.community.annotation.LoginRequired;
 import com.nowcoder.community.controller.interceptor.AlphaInterceptor;
 import com.nowcoder.community.controller.interceptor.LoginRequiredInterceptor;
 import com.nowcoder.community.controller.interceptor.LoginTicketInterceptor;
+import com.nowcoder.community.controller.interceptor.MessageInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -28,6 +29,10 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Autowired
     private LoginRequiredInterceptor loginRequiredInterceptor;
 
+    // 通知信息拦截器(私信、系统通知)
+    @Autowired
+    private MessageInterceptor messageInterceptor;
+
     // SpringBoot拦截器配置
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
@@ -43,6 +48,11 @@ public class WebMvcConfig implements WebMvcConfigurer {
         registry.addInterceptor(loginRequiredInterceptor)
                 .excludePathPatterns("/**/*.css", "**/*.js",
                         "**/*.jpg", "**/*.png", "**/*.jpeg");
+
+        registry.addInterceptor(messageInterceptor)
+                .excludePathPatterns("/**/*.css", "**/*.js",
+                        "**/*.jpg", "**/*.png", "**/*.jpeg");
+
     }
 
 
